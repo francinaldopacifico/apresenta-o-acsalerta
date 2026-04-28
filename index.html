@@ -3,207 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agente Ativo - Portal de Apresentações</title>
+    <title>Agente Ativo - Pindoretama</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #004e92;
-            --secondary: #000428;
-            --accent: #00d2ff;
-            --text-main: #1a1a1a;
-            --bg-light: #f8fafc;
-            --glass: rgba(255, 255, 255, 0.7);
-            --shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top right, #e0f2fe, #f8fafc);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
-
-        .background-blob {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: linear-gradient(135deg, rgba(0, 78, 146, 0.1), rgba(0, 210, 255, 0.1));
-            filter: blur(100px);
-            z-index: -1;
-            border-radius: 50%;
-            animation: float 20s infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translate(-10%, -10%); }
-            100% { transform: translate(10%, 10%); }
-        }
-
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .header {
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .logo {
-            width: 100px;
-            margin-bottom: 24px;
-            filter: drop-shadow(0 10px 20px rgba(0, 78, 146, 0.2));
-        }
-
-        .title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .city-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 40px;
-            padding: 60px 40px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            transform: scale(0.9);
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        .city-card:nth-child(1) { animation-delay: 0.2s; }
-        .city-card:nth-child(2) { animation-delay: 0.4s; }
-        .city-card:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes popIn {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .city-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
-        }
-
-        .city-icon {
-            font-size: 4rem;
-            margin-bottom: 24px;
-        }
-
-        .city-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .city-tag {
-            background: #e2e8f0;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #475569;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer {
-            margin-top: 80px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            opacity: 0;
-            animation: fadeIn 0.8s forwards 1s;
-        }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            .title { font-size: 2.5rem; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-blob"></div>
-    
-    <div class="container">
-        <header class="header">
-            <img src="assets/logo-agente-ativo.png" alt="Agente Ativo" class="logo" style="width: 250px; height: auto;">
-            <h1 class="title">Portfólio de Apresentações</h1>
-            <p class="subtitle">Selecione o município para visualizar a proposta tecnológica personalizada.</p>
-        </header>
 
-        <div class="grid">
-            <a href="https://apresentacao-pindoretama.vercel.app" class="city-card">
-                <div class="city-icon">🌊</div>
-                <h2 class="city-name">Pindoretama</h2>
-                <span class="city-tag">Ceará</span>
-            </a>
-
-            <a href="https://apresenta-o-beberibe.vercel.app" class="city-card">
-                <div class="city-icon">⛵</div>
-                <h2 class="city-name">Beberibe</h2>
-                <span class="city-tag">Ceará</span>
-            </a>
-
-            <a href="https://apresentacao-aquiraz.vercel.app" class="city-card">
-                <div class="city-icon">🏖️</div>
-                <h2 class="city-name">Aquiraz</h2>
-                <span class="city-tag">Ceará</span>
-            </a>
+    <header class="header">
+        <div class="container header__container">
+            <div class="logo">
+                <img src="assets/logo-agente-ativo.png" alt="Logo Agente Ativo" class="logo__img" style="height: 55px; width: auto;">
+            </div>
+            <nav class="nav">
+                <a href="#proposta" class="nav__link">Proposta</a>
+                <a href="#fluxo" class="nav__link">Como Funciona</a>
+                <a href="#impacto" class="nav__link">Impacto</a>
+                <a href="#contato" class="nav__cta">Fale Conosco</a>
+            </nav>
         </div>
+    </header>
 
-        <footer class="footer">
+    <main>
+        <section class="hero">
+            <div class="container hero__container">
+                <div class="hero__content reveal">
+                    <span class="badge">Inovação em Saúde Pública</span>
+                    <h1 class="hero__title">Pindoretama na vanguarda da <span class="text-gradient">Saúde Digital</span></h1>
+                    <p class="hero__description">
+                        A <strong>Agente Ativo</strong> conecta agentes de saúde, UBS e gestão em tempo real (através do painel integrado ACS Alerta), salvando vidas e otimizando recursos públicos.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#proposta" class="btn btn--primary">Descobrir o Projeto</a>
+                        <a href="#contato" class="btn btn--secondary">Solicitar Demonstração</a>
+                    </div>
+                </div>
+                <div class="hero__image reveal">
+                    <video controls playsinline>
+                        <source src="assets/hero-video.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                </div>
+            </div>
+            <div class="hero__background"></div>
+        </section>
+
+        <section id="proposta" class="section propuesta">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Eficiência que Salva</h2>
+                    <p class="section-subtitle">Transformando o atendimento básico através da tecnologia ativa.</p>
+                </div>
+                
+                <div class="proposta__grid">
+                    <div class="card reveal" style="--delay: 0.1s">
+                        <div class="card__icon card__icon--blue">01</div>
+                        <h3 class="card__title">Coleta em Tempo Real</h3>
+                        <p class="card__text">Dados inseridos pelo Agente Ativo são transmitidos instantaneamente para a unidade central.</p>
+                    </div>
+                    <div class="card reveal" style="--delay: 0.2s">
+                        <div class="card__icon card__icon--emerald">02</div>
+                        <h3 class="card__title">Alertas Imediatos</h3>
+                        <p class="card__text">Casos de risco disparam alertas para a UBS local, agilizando a intervenção médica necessária.</p>
+                    </div>
+                    <div class="card reveal" style="--delay: 0.3s">
+                        <div class="card__icon card__icon--purple">03</div>
+                        <h3 class="card__title">Gestão Inteligente</h3>
+                        <p class="card__text">Painéis analíticos permitem decisões baseadas em dados concretos para toda a Secretaria de Saúde.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fluxo" class="section section--dark flowchart">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Ecossistema de Saúde Digital</h2>
+                    <p class="section-subtitle">Informatização completa: do Agente de Saúde à Unidade Básica (UBS).</p>
+                </div>
+                <div class="flowchart__visual reveal">
+                    <img src="assets/fluxo-ecossistema-ubs.png" alt="Ecossistema de Saúde Digital" class="flowchart__img">
+                </div>
+                <div class="flowchart__description reveal" style="margin-top: 60px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; line-height: 1.8;">
+                        <div>
+                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">1. Digitalização no Campo (ACS)</h3>
+                            <p style="opacity: 0.9; font-size: 0.95rem;">O trabalho de campo é a porta de entrada. Através do painel operacional ACS Alerta, o agente realiza visitas domiciliares, coletando dados epidemiológicos em tempo real. Essa informação alimenta o sistema instantaneamente.</p>
+                        </div>
+                        <div>
+                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">2. Unidade Básica (UBS) Informatizada</h3>
+                            <p style="opacity: 0.9; font-size: 0.95rem;">A grande evolução é a informatização total da UBS. Consultas, triagem, farmácia e vacinação estão integradas em um prontuário eletrônico unificado, eliminando papéis e retrabalho.</p>
+                        </div>
+                        <div>
+                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">3. Hub Central & Banco de Dados</h3>
+                            <p style="opacity: 0.9; font-size: 0.95rem;">Todas os dados da rede convergem para um Servidor Central Seguro. Isso garante que o gestor tenha uma visão única e fiel da saúde do município, permitindo decisões rápidas.</p>
+                        </div>
+                        <div>
+                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">4. Inteligência e Dashboard</h3>
+                            <p style="opacity: 0.9; font-size: 0.95rem;">Com dados integrados, o gestor monitora mapas de calor de doenças, performance das equipes e cobertura vacinal em tempo real, garantindo total transparência e eficiência.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="section impacto">
+            <div class="container impacto__container">
+                <div class="impacto__content reveal">
+                    <h2 class="section-title">Resultados Mensuráveis</h2>
+                    <ul class="impacto__list">
+                        <li>
+                            <div class="impacto__icon">✓</div>
+                            <div>
+                                <strong>Redução Crítica de Custos:</strong> Menos gastos com internações evitáveis através do monitoramento preventivo.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="impacto__icon">✓</div>
+                            <div>
+                                <strong>Gestão Farmacêutica:</strong> Controle rigoroso da medicação para evitar desperdícios e faltas.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="impacto__icon">✓</div>
+                            <div>
+                                <strong>Cidade Inteligente:</strong> Pindoretama consolidando o uso de BIG DATA na saúde pública.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="impacto__visual reveal">
+                    <img src="assets/agente-ativo-3d.png" alt="Agente Ativo 3D" class="impacto__img">
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section contact">
+            <div class="container">
+                <div class="contact__card reveal">
+                    <h2 class="contact__title">Pronto para transformar a saúde municipal?</h2>
+                    <p class="contact__text">Entre em contato com nossa equipe técnica para uma apresentação detalhada.</p>
+                    <div class="contact__info">
+                        <span class="contact__label">Email Direto</span>
+                        <a href="mailto:comercial@agenteativo.com.br" class="contact__email">comercial@agenteativo.com.br</a>
+                        <p class="contact__att">A/C: Sr. Pacífico</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-bottom">
+        <div class="container footer-bottom__container">
             <p>&copy; 2026 Agente Ativo. Todos os direitos reservados.</p>
-        </footer>
-    </div>
+            <p>Projeto Desenvolvido para Pindoretama.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
