@@ -1,8 +1,8 @@
-Prefeito Dedé Soldado, tudo bem?
+Prefeita Ana Afif, tudo bem? Como admiradores do trabalho que vem sendo realizado em Cascavel, temos o orgulho de apresentar um projeto totalmente novo e inovador para a saúde do município: o ACS Alerta & Agente Ativo.
 
-Gostaria de compartilhar com o senhor uma iniciativa que pode colocar Pindoretama como referência nacional em Saúde Digital. Desenvolvemos o sistema Agente Ativo, que integra em tempo real o trabalho dos ACS com as UBS, otimizando a gestão e salvando vidas através de dados precisos.
+Nosso maior desejo é que Cascavel se torne a grande referência em saúde digital para todo o Estado e o Brasil. Preparamos uma apresentação visual para a senhora conhecer essa tecnologia que vai transformar o atendimento ao cidadão casca-velense.
 
-Preparamos esta breve apresentação visual para o senhor:
-🔗 https://apresenta-o-acsalerta.vercel.app
+Veja os detalhes neste link:
+🔗 https://apresentacao-acs-alerta.vercel.app/cascavel
 
-Estamos à disposição para uma demonstração técnica. Um abraço, Pacífico.
+Estamos à disposição para fazer de Cascavel um exemplo nacional de eficiência. Cordialmente, Pacífico.
