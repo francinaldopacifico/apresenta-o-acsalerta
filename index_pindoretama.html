@@ -3,117 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agente Ativo - Pindoretama</title>
+    <title>Proposta Comercial - ACS Alerta & Agente Ativo - Pindoretama</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pindoretama/style.css">
 </head>
 <body>
 
     <header class="header">
         <div class="container header__container">
             <div class="logo">
-                <img src="assets/logo-agente-ativo.png" alt="Logo Agente Ativo" class="logo__img" style="height: 55px; width: auto;">
+                <img src="pindoretama/assets/logo-acs.png" alt="Logo ACS Alerta" class="logo__img">
+                <span class="logo__text">ACS ALERTA</span>
             </div>
             <nav class="nav">
                 <a href="#proposta" class="nav__link">Proposta</a>
-                <a href="#fluxo" class="nav__link">Como Funciona</a>
+                <a href="#diferencial" class="nav__link">Diferencial</a>
+                <a href="#modulos" class="nav__link">Módulos</a>
                 <a href="#financeiro" class="nav__link">Repasses FNS</a>
-                <a href="#impacto" class="nav__link">Impacto</a>
+                <a href="#planos" class="nav__link">Planos</a>
+                <a href="#cronograma" class="nav__link">Cronograma</a>
                 <a href="#contato" class="nav__cta">Fale Conosco</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container hero__container">
                 <div class="hero__content reveal">
-                    <span class="badge">Inovação em Saúde Pública</span>
+                    <span class="badge">Proposta de Serviços Tecnológicos</span>
                     <h1 class="hero__title">Pindoretama na vanguarda da <span class="text-gradient">Saúde Digital</span></h1>
                     <p class="hero__description">
-                        A <strong>Agente Ativo</strong> conecta agentes de saúde, UBS e gestão em tempo real (através do painel integrado ACS Alerta), salvando vidas e otimizando recursos públicos.
+                        Uma solução integrada de alta performance conectando os Agentes de Saúde (ACS Alerta), as Unidades Básicas (Agente Ativo/UBS) e a Média e Alta Complexidade (Hospital SAAS) em tempo real.
                     </p>
+                    
+                    <div class="hero__target">
+                        <strong>Direcionado à:</strong><br>
+                        Exmo. Sr. Prefeito Dedé Soldado<br>
+                        Secretaria Municipal de Saúde de Pindoretama - CE
+                    </div>
+
                     <div class="hero__actions">
-                        <a href="#proposta" class="btn btn--primary">Descobrir o Projeto</a>
+                        <a href="#planos" class="btn btn--primary">Ver Planos de Contratação</a>
                         <a href="#contato" class="btn btn--secondary">Solicitar Demonstração</a>
                     </div>
                 </div>
-                <div class="hero__image reveal">
-                    <video controls playsinline>
-                        <source src="assets/hero-video.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos.
-                    </video>
+                <div class="hero__image reveal" style="--delay: 0.15s">
+                    <img src="pindoretama/assets/painel-login.png" alt="Painel de Login Unificado - ACS Alerta" class="floating">
                 </div>
             </div>
             <div class="hero__background"></div>
         </section>
 
-        <section id="proposta" class="section propuesta">
+        <!-- Diferencial Section -->
+        <section id="diferencial" class="section diferencial">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Eficiência que Salva</h2>
-                    <p class="section-subtitle">Transformando o atendimento básico através da tecnologia ativa.</p>
+                    <h2 class="section-title">Prontuário Único Integrado Municipal</h2>
+                    <p class="section-subtitle">O grande diferencial tecnológico da nossa proposta: a Interoperabilidade Vertical Total da saúde de Pindoretama.</p>
                 </div>
                 
-                <div class="proposta__grid">
-                    <div class="card reveal" style="--delay: 0.1s">
-                        <div class="card__icon card__icon--blue">01</div>
-                        <h3 class="card__title">Coleta em Tempo Real</h3>
-                        <p class="card__text">Dados inseridos pelo Agente Ativo são transmitidos instantaneamente para a unidade central.</p>
+                <div class="diferencial__grid">
+                    <div class="dif-card reveal" style="--delay: 0.1s">
+                        <div class="dif-card__num">01</div>
+                        <h3 class="dif-card__title">Interoperabilidade Vertical</h3>
+                        <p class="dif-card__text">
+                            Os dados inseridos pelas visitas de campo dos agentes de saúde (ACS) alimentam instantaneamente o Prontuário Eletrônico da UBS, que por sua vez está conectado diretamente ao Hospital Municipal.
+                        </p>
                     </div>
-                    <div class="card reveal" style="--delay: 0.2s">
-                        <div class="card__icon card__icon--emerald">02</div>
-                        <h3 class="card__title">Alertas Imediatos</h3>
-                        <p class="card__text">Casos de risco disparam alertas para a UBS local, agilizando a intervenção médica necessária.</p>
+                    <div class="dif-card reveal" style="--delay: 0.2s">
+                        <div class="dif-card__num">02</div>
+                        <h3 class="dif-card__title">Fim da Duplicidade de Exames</h3>
+                        <p class="dif-card__text">
+                            Exames laboratoriais e de imagem realizados no Hospital Municipal ficam disponíveis imediatamente no prontuário para os médicos das UBSs de Pindoretama, evitando custos desnecessários e retrabalho.
+                        </p>
                     </div>
-                    <div class="card reveal" style="--delay: 0.3s">
-                        <div class="card__icon card__icon--purple">03</div>
-                        <h3 class="card__title">Gestão Inteligente</h3>
-                        <p class="card__text">Painéis analíticos permitem decisões baseadas em dados concretos para toda a Secretaria de Saúde.</p>
+                    <div class="dif-card reveal" style="--delay: 0.3s">
+                        <div class="dif-card__num">03</div>
+                        <h3 class="dif-card__title">Alerta de Pós-Alta Hospitalar</h3>
+                        <p class="dif-card__text">
+                            No momento em que o paciente recebe alta do hospital, um alerta automático é disparado para a equipe de Saúde da Família (eSF) responsável pelo seu território, agilizando o acompanhamento domiciliar preventivo.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="fluxo" class="section section--dark flowchart">
+        <!-- Escopo dos Módulos Section -->
+        <section id="modulos" class="section modulos">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2 class="section-title">Ecossistema de Saúde Digital</h2>
-                    <p class="section-subtitle">Informatização completa: do Agente de Saúde à Unidade Básica (UBS).</p>
+                    <h2 class="section-title">Escopo dos Módulos Inclusos</h2>
+                    <p class="section-subtitle">Tecnologia especializada cobrindo todas as frentes de atendimento e gestão do município.</p>
                 </div>
-                <div class="flowchart__visual reveal">
-                    <img src="assets/fluxo-ecossistema-ubs.png" alt="Ecossistema de Saúde Digital" class="flowchart__img">
-                </div>
-                <div class="flowchart__description reveal" style="margin-top: 60px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto;">
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; line-height: 1.8;">
-                        <div>
-                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">1. Digitalização no Campo (ACS)</h3>
-                            <p style="opacity: 0.9; font-size: 0.95rem;">O trabalho de campo é a porta de entrada. Através do painel operacional ACS Alerta, o agente realiza visitas domiciliares, coletando dados epidemiológicos em tempo real. Essa informação alimenta o sistema instantaneamente.</p>
-                        </div>
-                        <div>
-                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">2. Unidade Básica (UBS) Informatizada</h3>
-                            <p style="opacity: 0.9; font-size: 0.95rem;">A grande evolução é a informatização total da UBS. Consultas, triagem, farmácia e vacinação estão integradas em um prontuário eletrônico unificado, eliminando papéis e retrabalho.</p>
-                        </div>
-                        <div>
-                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">3. Hub Central & Banco de Dados</h3>
-                            <p style="opacity: 0.9; font-size: 0.95rem;">Todas os dados da rede convergem para um Servidor Central Seguro. Isso garante que o gestor tenha uma visão única e fiel da saúde do município, permitindo decisões rápidas.</p>
-                        </div>
-                        <div>
-                            <h3 style="color: #00d2ff; margin-bottom: 15px; font-family: var(--font-heading);">4. Inteligência e Dashboard</h3>
-                            <p style="opacity: 0.9; font-size: 0.95rem;">Com dados integrados, o gestor monitora mapas de calor de doenças, performance das equipes e cobertura vacinal em tempo real, garantindo total transparência e eficiência.</p>
-                        </div>
+                
+                <div class="modulos__grid">
+                    <!-- Modulo A -->
+                    <div class="mod-card reveal" style="--delay: 0.1s">
+                        <div class="mod-card__icon mod-card__icon--blue">A</div>
+                        <h3 class="mod-card__title">Portal do Agente (ACS Alerta)</h3>
+                        <ul class="mod-card__list">
+                            <li>Substituição completa das antigas fichas físicas de papel por aplicativo móvel ágil.</li>
+                            <li>Suporte offline total para trabalho de campo em distritos e localidades de Pindoretama (como Caponga Funda, Prata, Preaoca, Bixopa e Caranaúba).</li>
+                            <li>Roteirização inteligente e alertas automáticos de busca ativa (vacinas, gestantes, crônicos).</li>
+                            <li>Validação cadastral avançada na ponta (validação automática de CPF e Cartão SUS).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Modulo B -->
+                    <div class="mod-card reveal" style="--delay: 0.2s">
+                        <div class="mod-card__icon mod-card__icon--purple">B</div>
+                        <h3 class="mod-card__title">Portal Administrativo (Agente Ativo & UBS)</h3>
+                        <ul class="mod-card__list">
+                            <li>BI e dashboards dinâmicos com monitoramento dos 7 indicadores federais do Previne Brasil.</li>
+                            <li>Mapeamento inteligente de territórios, microáreas e áreas de vulnerabilidade social.</li>
+                            <li>Sincronização em tempo real e envio automatizado de fichas ao e-SUS e à RNDS.</li>
+                            <li>Acompanhamento quadrimestral das metas do Indicador Sintético Final (ISF).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Modulo C -->
+                    <div class="mod-card reveal" style="--delay: 0.3s">
+                        <div class="mod-card__icon mod-card__icon--deep">C</div>
+                        <h3 class="mod-card__title">Portal Hospitalar (Hospital SAAS)</h3>
+                        <ul class="mod-card__list">
+                            <li>Recepção digital com emissão de senhas e triagem rápida de urgência (Protocolo de Manchester).</li>
+                            <li>Prontuário clínico eletrônico de urgência/emergência e prescrição digital de medicamentos.</li>
+                            <li>Gestão operacional de leitos e internações em tempo real por painel de controle central.</li>
+                            <li>Ouvidoria ativa, Serviço Social e farmácia hospitalar totalmente integrada ao estoque REMUME.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Monitoramento Financeiro Section -->
         <section id="financeiro" class="section financeiro">
             <div class="container">
                 <div class="section-header reveal">
-                    <span class="badge" style="background: hsl(0, 100%, 95%); color: hsl(0, 80%, 45%); margin-bottom: 15px;">Monitoramento Estratégico</span>
+                    <span class="badge" style="background: hsl(45, 100%, 92%); color: var(--primary); margin-bottom: 15px;">Monitoramento Estratégico</span>
                     <h2 class="section-title">Impacto Financeiro na Saúde (APS)</h2>
                     <p class="section-subtitle">Gestão: Prefeito Dedé Soldado | Competência: 2025 - 2026 | Base: Fundo Nacional de Saúde (FNS)</p>
                 </div>
@@ -123,43 +155,43 @@
                 </div>
 
                 <h3 class="financeiro__subtitle reveal">1. Resumo de Repasses (Custeio Mensal APS)</h3>
-                <div class="proposta__grid financeiro__grid reveal" style="--delay: 0.1s">
-                    <div class="card" style="border-top: 4px solid var(--primary);">
-                        <div class="card__icon" style="background: hsl(220, 100%, 95%); color: var(--primary);">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <div class="diferencial__grid reveal" style="--delay: 0.1s">
+                    <div class="dif-card" style="border-top: 6px solid var(--primary);">
+                        <div class="mod-card__icon mod-card__icon--blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         </div>
-                        <h3 class="card__title">Capitação Ponderada</h3>
+                        <h3 class="dif-card__title" style="margin-top: 15px;">Capitação Ponderada</h3>
                         <div class="financeiro__valor">~ R$ 190.000<small>/mês</small></div>
-                        <p class="card__text">Recurso vinculado ao número de cidadãos com cadastro atualizado (CPF/Cartão SUS) realizado pelos ACS. <br><strong style="color: hsl(0, 80%, 50%); display: inline-block; margin-top: 8px;">Risco:</strong> Perda imediata por cadastros desatualizados.</p>
+                        <p class="dif-card__text">Recurso vinculado ao número de cidadãos com cadastro atualizado (CPF/Cartão SUS) realizado pelos ACS. <br><strong style="color: hsl(0, 80%, 45%); display: inline-block; margin-top: 8px;">Risco:</strong> Perda imediata por cadastros desatualizados.</p>
                     </div>
                     
-                    <div class="card" style="border-top: 4px solid var(--accent-emerald);">
-                        <div class="card__icon" style="background: hsl(160, 100%, 95%); color: var(--accent-emerald);">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <div class="dif-card" style="border-top: 6px solid var(--secondary);">
+                        <div class="mod-card__icon mod-card__icon--purple" style="background: hsl(45, 100%, 92%); color: var(--secondary);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                         </div>
-                        <h3 class="card__title">Pagamento Desempenho</h3>
+                        <h3 class="dif-card__title" style="margin-top: 15px;">Pagamento Desempenho</h3>
                         <div class="financeiro__valor">R$ 55.000<small>/mês</small></div>
-                        <p class="card__text">Valor variável (média R$ 45k - R$ 65k) conforme alcance de metas (Pré-natal, Vacinação, Crônicos). <br><strong style="color: hsl(0, 80%, 50%); display: inline-block; margin-top: 8px;">Risco:</strong> Queda de até 50% por falha nas metas.</p>
+                        <p class="dif-card__text">Valor variável (média R$ 45k - R$ 65k) conforme alcance de metas (Pré-natal, Vacinação, Crônicos). <br><strong style="color: hsl(0, 80%, 45%); display: inline-block; margin-top: 8px;">Risco:</strong> Queda de até 50% por falha nas metas.</p>
                     </div>
 
-                    <div class="card" style="border-top: 4px solid var(--accent-purple);">
-                        <div class="card__icon" style="background: hsl(270, 100%, 95%); color: var(--accent-purple);">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <div class="dif-card" style="border-top: 6px solid var(--accent-purple);">
+                        <div class="mod-card__icon mod-card__icon--deep" style="background: hsl(260, 100%, 94%); color: var(--accent-purple);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                         </div>
-                        <h3 class="card__title">Incentivos Fixos</h3>
+                        <h3 class="dif-card__title" style="margin-top: 15px;">Incentivos Fixos</h3>
                         <div class="financeiro__valor">~ R$ 25.000<small>/mês</small></div>
-                        <p class="card__text">Repasses para programas estratégicos governamentais, como Saúde na Escola e outros custeios de rotina.</p>
+                        <p class="dif-card__text">Repasses para programas estratégicos governamentais, como Saúde na Escola e outros custeios de rotina da rede.</p>
                     </div>
                 </div>
 
                 <div class="financeiro__alert reveal" style="--delay: 0.2s">
                     <div class="financeiro__alert-icon">⚠️</div>
                     <div class="financeiro__alert-text">
-                        <strong>O Custo da Falha de Dados:</strong> Cada equipe de Saúde da Família (eSF) gera um bônus de qualidade de até <strong>R$ 8.000,00 mensais</strong>. Com a estrutura atual (8 a 10 equipes), a diferença entre uma gestão eficiente e uma gestão com falhas no sistema pode custar <strong>mais de R$ 400.000,00 por ano</strong> aos cofres de Pindoretama.
+                        <strong>O Custo da Falha de Dados:</strong> Cada equipe de Saúde da Família (eSF) gera um bônus de qualidade de até <strong>R$ 8.000,00 mensais</strong>. Com a estrutura atual (8 a 10 equipes), a diferença entre uma gestão eficiente e uma gestão com falhas no sistema de dados pode custar <strong>mais de R$ 400.000,00 por ano</strong> aos cofres de Pindoretama.
                     </div>
                 </div>
 
-                <h3 class="financeiro__subtitle reveal" style="margin-top: 80px;">2. Investimentos Específicos Garantidos (2025 - 2026)</h3>
+                <h3 class="financeiro__subtitle reveal" style="margin-top: 60px;">2. Investimentos Específicos Garantidos (2025 - 2026)</h3>
                 <div class="investimentos__table-wrap reveal" style="--delay: 0.3s">
                     <table class="investimentos__table">
                         <thead>
@@ -191,47 +223,145 @@
 
                 <div class="financeiro__conclusion reveal" style="--delay: 0.4s">
                     <h4>Conclusão Estratégica</h4>
-                    <p>Para garantir a manutenção e o crescimento destes valores, o monitoramento em tempo real do <strong>Indicador Sintético Final (ISF)</strong> através do eGestor AB é vital. Ferramentas como o <strong>Agente Ativo</strong> antecipam estes números antes do fechamento quadrimestral, evitando perdas irreversíveis e bloqueios de recursos.</p>
+                    <p>Para garantir a manutenção e o crescimento destes valores, o monitoramento em tempo real do <strong>Indicador Sintético Final (ISF)</strong> através do eGestor AB é vital. Ferramentas como o <strong>Agente Ativo</strong> antecipam estes números antes do fechamento quadrimestral, evitando perdas irreversíveis e bloqueios de repasses.</p>
                 </div>
             </div>
         </section>
 
-        <section id="impacto" class="section impacto">
-            <div class="container impacto__container">
-                <div class="impacto__content reveal">
-                    <h2 class="section-title">Resultados Mensuráveis</h2>
-                    <ul class="impacto__list">
-                        <li>
-                            <div class="impacto__icon">✓</div>
-                            <div>
-                                <strong>Redução Crítica de Custos:</strong> Menos gastos com internações evitáveis através do monitoramento preventivo.
-                            </div>
-                        </li>
-                        <li>
-                            <div class="impacto__icon">✓</div>
-                            <div>
-                                <strong>Gestão Farmacêutica:</strong> Controle rigoroso da medicação para evitar desperdícios e faltas.
-                            </div>
-                        </li>
-                        <li>
-                            <div class="impacto__icon">✓</div>
-                            <div>
-                                <strong>Cidade Inteligente:</strong> Pindoretama consolidando o uso de BIG DATA na saúde pública.
-                            </div>
-                        </li>
-                    </ul>
+        <!-- Planos e Investimentos Section -->
+        <section id="planos" class="section planos">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Planos e Investimentos</h2>
+                    <p class="section-subtitle">Duas opções de contratação flexíveis de acordo com a abrangência tecnológica desejada pela Prefeitura.</p>
                 </div>
-                <div class="impacto__visual reveal">
-                    <img src="assets/agente-ativo-3d.png" alt="Agente Ativo 3D" class="impacto__img">
+                
+                <div class="planos__grid">
+                    <!-- Plano Standard -->
+                    <div class="plano-card reveal" style="--delay: 0.15s">
+                        <h3 class="plano-card__title">Plano Standard</h3>
+                        <p class="plano-card__subtitle">Foco exclusivo na informatização e otimização da Atenção Primária.</p>
+                        <div class="plano-card__price">R$ 59.000<small>/ano</small></div>
+                        <ul class="plano-card__features">
+                            <li>Portal do Agente (ACS Alerta completo)</li>
+                            <li>Portal Administrativo (UBS e gestão unificada)</li>
+                            <li>Dashboards do Previne Brasil (Monitoramento de metas)</li>
+                            <li>Infraestrutura em nuvem integrada (Banco de dados MySQL)</li>
+                            <li>Suporte técnico especializado por e-mail e canal corporativo</li>
+                        </ul>
+                        <a href="#contato" class="btn btn--secondary" style="margin-top: auto;">Contratar Plano Standard</a>
+                    </div>
+
+                    <!-- Plano Plus -->
+                    <div class="plano-card plano-card--premium reveal" style="--delay: 0.25s">
+                        <h3 class="plano-card__title">Plano Plus</h3>
+                        <p class="plano-card__subtitle">A cobertura tecnológica mais completa para toda a rede unificada municipal.</p>
+                        <div class="plano-card__price">R$ 110.000<small>/ano</small></div>
+                        <ul class="plano-card__features">
+                            <li><strong>Tudo do Plano Standard incluso</strong></li>
+                            <li>Portal Hospitalar Completo (Hospital SAAS)</li>
+                            <li>Prontuário Único Integrado Municipal (Integração total)</li>
+                            <li>Classificação de Risco & Triagem de Manchester</li>
+                            <li>Gestão de Internações e Controle Operacional de Leitos</li>
+                            <li>Farmácia Hospitalar e Almoxarifado Integrados</li>
+                            <li>Ouvidoria, Serviço Social e regulação interna de filas</li>
+                            <li>Prioridade em suporte 24/7 e atualizações contínuas</li>
+                        </ul>
+                        <a href="#contato" class="btn btn--primary" style="margin-top: auto;">Contratar Plano Plus</a>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Cronograma Section -->
+        <section id="cronograma" class="section cronograma">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Cronograma de Implantação</h2>
+                    <p class="section-subtitle">Uma transição ágil, profissional e acompanhada em até 60 dias para o go-live completo.</p>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item reveal" style="--delay: 0.1s">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dias 01 a 15</div>
+                            <h3 class="timeline-title">Estruturação & Setup de Nuvem</h3>
+                            <p class="timeline-text">Montagem da infraestrutura em nuvem segura, criação e validação do banco de dados MySQL corporativo, cadastramento inicial de unidades de saúde, equipes e usuários administradores.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="timeline-item reveal" style="--delay: 0.2s">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dias 16 a 30</div>
+                            <h3 class="timeline-title">Porta de Entrada e Recepção</h3>
+                            <p class="timeline-text">Configuração inicial de senhas, ativação da classificação de risco (Manchester), e treinamento intensivo prático com recepcionistas, triadores e equipe de acolhimento hospitalar.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="timeline-item reveal" style="--delay: 0.3s">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dias 31 a 45</div>
+                            <h3 class="timeline-title">Treinamento Clínico & Farmácia</h3>
+                            <p class="timeline-text">Capacitação do corpo clínico (médicos e enfermeiros) para uso do prontuário médico eletrônico, emissão de receitas digitais e treinamento prático de dispensação de remédios e controle de estoque.</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="timeline-item reveal" style="--delay: 0.4s">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dias 46 a 60</div>
+                            <h3 class="timeline-title">Operação Assistida Go-Live</h3>
+                            <p class="timeline-text">Entrada oficial em produção monitorada com técnicos acompanhando presencialmente na recepção, enfermagem, consultórios e farmácia para suporte rápido aos profissionais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Especificacoes Section -->
+        <section id="tecnologia" class="section tecnologia">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Especificações Técnicas & Segurança</h2>
+                    <p class="section-subtitle">Arquitetura robusta planejada para garantir estabilidade operacional e proteção total de dados municipais.</p>
+                </div>
+                
+                <div class="tecnologia__grid">
+                    <div class="tech-card reveal" style="--delay: 0.1s">
+                        <div class="tech-card__icon">💾</div>
+                        <h3 class="tech-card__title">Banco de Dados MySQL</h3>
+                        <p class="tech-card__text">Hospedagem em servidores cloud de alta performance, garantindo redundância, backup diário e queries de alta velocidade.</p>
+                    </div>
+                    <div class="tech-card reveal" style="--delay: 0.2s">
+                        <div class="tech-card__icon">🔒</div>
+                        <h3 class="tech-card__title">Segurança de Tráfego</h3>
+                        <p class="tech-card__text">Criptografia SSL/HTTPS aplicada em todas as conexões, impossibilitando a interceptação de informações confidenciais.</p>
+                    </div>
+                    <div class="tech-card reveal" style="--delay: 0.3s">
+                        <div class="tech-card__icon">⚖️</div>
+                        <h3 class="tech-card__title">LGPD Compliant</h3>
+                        <p class="tech-card__text">Adequação integral às normas da Lei Geral de Proteção de Dados, com trilha de auditoria completa e proteção a prontuários.</p>
+                    </div>
+                    <div class="tech-card reveal" style="--delay: 0.4s">
+                        <div class="tech-card__icon">🎨</div>
+                        <h3 class="tech-card__title">Design Ergonômico</h3>
+                        <p class="tech-card__text">Interface com tonalidades de verde cana especialmente pensada e balanceada para prevenir o cansaço visual em longos turnos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contato" class="section contact">
             <div class="container">
                 <div class="contact__card reveal">
                     <h2 class="contact__title">Pronto para transformar a saúde municipal?</h2>
                     <p class="contact__text">Entre em contato com nossa equipe técnica para uma apresentação detalhada.</p>
+                    
                     <div class="contact__info">
                         <span class="contact__label">Email Direto</span>
                         <a href="mailto:comercial@agenteativo.com.br" class="contact__email">comercial@agenteativo.com.br</a>
@@ -253,7 +383,7 @@
     <footer class="footer-bottom">
         <div class="container footer-bottom__container">
             <p>&copy; 2026 Agente Ativo. Todos os direitos reservados.</p>
-            <p>Projeto Desenvolvido para Pindoretama.</p>
+            <p>Projeto Comercial Desenvolvido para a Prefeitura de Pindoretama.</p>
         </div>
     </footer>
 

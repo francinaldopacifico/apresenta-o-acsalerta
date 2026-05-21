@@ -1,22 +1,22 @@
 :root {
-    /* Color Palette - HSL (Tons de Azul Claro e Destaque Cascavel Ouro) */
-    --primary-hue: 208;
-    --primary: hsl(var(--primary-hue), 90%, 25%);
-    --primary-light: hsl(var(--primary-hue), 75%, 42%);
-    --secondary: hsl(196, 95%, 48%);
-    --accent-emerald: hsl(165, 80%, 40%);
-    --accent-purple: hsl(260, 65%, 55%);
+    /* Color Palette - HSL (Tons de Verde Cana e Destaque Pindoretama Ouro) */
+    --primary-hue: 145;
+    --primary: hsl(var(--primary-hue), 75%, 20%);
+    --primary-light: hsl(var(--primary-hue), 65%, 35%);
+    --secondary: hsl(45, 95%, 48%);
+    --accent-emerald: hsl(var(--primary-hue), 70%, 40%);
+    --accent-purple: hsl(260, 50%, 55%);
     --accent-gold: hsl(45, 95%, 45%);
     
-    --bg-light: hsl(208, 40%, 97%);
-    --text-main: hsl(215, 30%, 15%);
-    --text-muted: hsl(215, 12%, 48%);
+    --bg-light: hsl(var(--primary-hue), 30%, 97.5%);
+    --text-main: hsl(var(--primary-hue), 35%, 12%);
+    --text-muted: hsl(var(--primary-hue), 12%, 45%);
     --white: #ffffff;
     
     --glass: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(255, 255, 255, 0.5);
-    --shadow: 0 20px 40px rgba(15, 34, 58, 0.06);
-    --shadow-hover: 0 30px 60px rgba(15, 34, 58, 0.12);
+    --shadow: 0 20px 40px rgba(12, 45, 25, 0.05);
+    --shadow-hover: 0 30px 60px rgba(12, 45, 25, 0.10);
     
     /* Typography */
     --font-heading: 'Outfit', sans-serif;
@@ -792,4 +792,125 @@ h1, h2, h3, h4 {
     .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 45px; }
     .timeline-dot { left: 10px !important; }
     .timeline-content { max-width: 100%; float: none !important; }
+}
+
+/* Custom Pindoretama Financial Section */
+.financeiro {
+    background: white;
+}
+
+.financeiro__intro {
+    text-align: center;
+    max-width: 800px;
+    margin: -20px auto 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.financeiro__subtitle {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin: 50px auto 25px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.financeiro__valor {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 15px 0;
+    font-family: var(--font-heading);
+}
+
+.financeiro__valor small {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.financeiro__alert {
+    background: hsl(45, 100%, 96%);
+    border-left: 5px solid var(--secondary);
+    padding: 25px 30px;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 950px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 0 10px 30px rgba(45, 95, 48, 0.03);
+}
+
+.financeiro__alert-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.financeiro__alert-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+.investimentos__table-wrap {
+    max-width: 950px;
+    margin: 0 auto 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.investimentos__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    text-align: left;
+}
+
+.investimentos__table th, .investimentos__table td {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.investimentos__table th {
+    background: var(--bg-light);
+    color: var(--primary);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.investimentos__table tr:last-child td {
+    border-bottom: none;
+}
+
+.valor-destaque {
+    font-weight: 800;
+    color: var(--accent-emerald);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+
+.financeiro__conclusion {
+    background: var(--bg-light);
+    padding: 35px;
+    border-radius: 24px;
+    max-width: 950px;
+    margin: 40px auto 0;
+    border: 1px solid rgba(255,255,255,0.7);
+}
+
+.financeiro__conclusion h4 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.financeiro__conclusion p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
 }

@@ -3,6 +3,7 @@ Prefeito Dedé Soldado, tudo bem?
 Gostaria de compartilhar com o senhor uma iniciativa que pode colocar Pindoretama como referência nacional em Saúde Digital. Desenvolvemos o sistema Agente Ativo, que integra em tempo real o trabalho dos ACS com as UBS, otimizando a gestão e salvando vidas através de dados precisos.
 
 Preparamos esta breve apresentação visual para o senhor:
-🔗 https://apresenta-o-acsalerta.vercel.app
+🔗 https://apresentacao-acs-alerta.vercel.app/pindoretama
 
 Estamos à disposição para uma demonstração técnica. Um abraço, Pacífico.
+
