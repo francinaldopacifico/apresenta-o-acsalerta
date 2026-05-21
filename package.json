@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "build": "echo 'Static build'"
+  },
   "dependencies": {
     "next-auth": "^4.24.14"
   }
 }
+
