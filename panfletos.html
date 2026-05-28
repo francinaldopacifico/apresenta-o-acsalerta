@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panfletos para Impressão - ACS Alerta & Agente Ativo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #0f172a;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* A4 Page container */
+        .a4-sheet {
+            width: 210mm;
+            height: 297mm;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Individual Flyer */
+        .flyer {
+            width: 105mm;
+            height: 148.5mm;
+            padding: 10mm 8mm;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Dotted cutting guidelines */
+        .flyer--top-left {
+            border-right: 1px dashed #cbd5e1;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+        .flyer--top-right {
+            border-bottom: 1px dashed #cbd5e1;
+        }
+        .flyer--bottom-left {
+            border-right: 1px dashed #cbd5e1;
+        }
+
+        /* Flyer content styles */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: 2.5mm;
+            margin-bottom: 2.5mm;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1.5mm;
+        }
+
+        .logo-icon {
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5mm;
+            font-weight: 800;
+            letter-spacing: -0.2mm;
+            color: #1e3a8a;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            display: block;
+            font-size: 2mm;
+            color: #64748b;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 0.5mm;
+        }
+
+        .badge-exclusive {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            font-size: 2.2mm;
+            font-weight: 700;
+            padding: 0.8mm 2mm;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 3.5mm;
+        }
+
+        .title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.8mm;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            letter-spacing: -0.1mm;
+        }
+
+        .title p {
+            font-size: 2.5mm;
+            color: #475569;
+            margin-top: 0.5mm;
+            font-weight: 500;
+        }
+
+        /* Pillars of computerization */
+        .pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 2.2mm;
+            margin-bottom: 4mm;
+        }
+
+        .pillar-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 2mm;
+            padding: 2.2mm 3mm;
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5mm;
+            transition: background-color 0.2s;
+        }
+
+        .pillar-icon {
+            width: 6mm;
+            height: 6mm;
+            background-color: #eff6ff;
+            border-radius: 1.2mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.2mm;
+        }
+
+        .pillar-icon.acs { background-color: #ecfdf5; color: #059669; }
+        .pillar-icon.ubs { background-color: #eff6ff; color: #2563eb; }
+        .pillar-icon.hosp { background-color: #fdf2f8; color: #db2777; }
+
+        .pillar-info h3 {
+            font-size: 3mm;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.4mm;
+            display: flex;
+            align-items: center;
+            gap: 1mm;
+        }
+
+        .pillar-info p {
+            font-size: 2.35mm;
+            color: #475569;
+            line-height: 1.35;
+        }
+
+        /* Pricing Section */
+        .promo-container {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fde68a;
+            border-radius: 2.5mm;
+            padding: 3mm;
+            text-align: center;
+            margin-bottom: 4mm;
+            position: relative;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: -2mm;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d97706;
+            color: #ffffff;
+            font-size: 1.8mm;
+            font-weight: 800;
+            padding: 0.6mm 2.5mm;
+            border-radius: 100px;
+            letter-spacing: 0.4px;
+            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
+            text-transform: uppercase;
+        }
+
+        .price-row {
+            margin-top: 1mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .price-desc {
+            font-size: 2.6mm;
+            color: #78350f;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+        }
+
+        .price-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 6.8mm;
+            font-weight: 800;
+            color: #b45309;
+            line-height: 1.1;
+            margin: 0.5mm 0;
+        }
+
+        .price-value span {
+            font-size: 3.5mm;
+            font-weight: 600;
+        }
+
+        .price-licitation {
+            font-size: 2.3mm;
+            color: #047857;
+            font-weight: 700;
+            background-color: #d1fae5;
+            padding: 0.4mm 2.2mm;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1mm;
+        }
+
+        .price-hospital {
+            border-top: 1px solid #fcd34d;
+            margin-top: 2.2mm;
+            padding-top: 1.8mm;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5mm;
+        }
+
+        .hosp-badge {
+            background-color: #fce7f3;
+            color: #db2777;
+            font-size: 2.1mm;
+            font-weight: 800;
+            padding: 0.4mm 1.8mm;
+            border-radius: 100px;
+            text-transform: uppercase;
+        }
+
+        .hosp-text {
+            font-size: 2.4mm;
+            color: #831843;
+            font-weight: 700;
+        }
+
+        /* Footer & Call To Action */
+        .footer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2.5mm;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8mm;
+        }
+
+        .cta-title {
+            font-size: 2.2mm;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contacts-grid {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 2mm;
+        }
+
+        .contact-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5mm;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5mm;
+            padding: 1.8mm 1mm;
+            text-decoration: none;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .contact-item.wa {
+            background-color: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-label {
+            font-size: 1.6mm;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #64748b;
+            line-height: 1;
+        }
+
+        .contact-item.wa .contact-label {
+            color: #15803d;
+        }
+
+        .contact-val {
+            font-size: 2.6mm;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 0.2mm;
+        }
+
+        .footer-credit {
+            font-size: 1.8mm;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 1mm;
+        }
+
+        /* Printable optimization */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .a4-sheet {
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
+            /* Chrome/Safari print margin bug fix */
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="a4-sheet">
+        
+        <!-- ==================== PANFLETO 1 (SUPERIOR ESQUERDO) ==================== -->
+        <div class="flyer flyer--top-left">
+            <div class="header">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                        <span class="logo-text">AGENTE ATIVO</span>
+                        <span class="logo-sub">TECNOLOGIA EM SAÚDE PÚBLICA</span>
+                    </div>
+                </div>
+                <div class="badge-exclusive">Especialista SUS</div>
+            </div>
+
+            <div class="title">
+                <h1>Saúde Municipal 100% Integrada</h1>
+                <p>Conectando a Atenção Básica à Média e Alta Complexidade em tempo real</p>
+            </div>
+
+            <div class="pillars">
+                <!-- ACS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon acs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização ACS <small style="color:#059669; font-weight:700;">(App Mobile)</small></h3>
+                        <p>Aplicativo móvel leve, 100% offline. Visitas geolocalizadas, busca ativa inteligente e sincronização automática com o e-SUS.</p>
+                    </div>
+                </div>
+                
+                <!-- UBS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon ubs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização UBS <small style="color:#2563eb; font-weight:700;">(Portal Web)</small></h3>
+                        <p>Triagem, prontuário único do cidadão e monitoramento dinâmico em tempo real dos 7 indicadores do Previne Brasil.</p>
+                    </div>
+                </div>
+                
+                <!-- HOSPITAL -->
+                <div class="pillar-card">
+                    <div class="pillar-icon hosp">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M12 9v6"/><path d="M9 12h6"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Portal Hospitalar <small style="color:#db2777; font-weight:700;">(Média/Alta)</small></h3>
+                        <p>Recepção com controle de senhas, Protocolo de Manchester, regulação de leitos e farmácia hospitalar de dose unitária.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-container">
+                <span class="promo-badge">Oferta Especial Limitada</span>
+                <div class="price-row">
+                    <span class="price-desc">Informatização ACS + UBS</span>
+                    <span class="price-value">R$ 59.000 <span>/ano</span></span>
+                    <span class="price-licitation">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Sem Necessidade de Licitação
+                    </span>
+                </div>
+                <div class="price-hospital">
+                    <span class="hosp-badge">Hospital</span>
+                    <span class="hosp-text">Informatização Hospitalar Completa</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <span class="cta-title">Entre em contato e agende uma demonstração:</span>
+                <div class="contacts-grid">
+                    <a href="https://wa.me/5585997055983" target="_blank" class="contact-item wa">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-val">(85) 99705-5983</span>
+                        </div>
+                    </a>
+                    <a href="mailto:comercial@agenteativo.com.br" class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-val">comercial@agenteativo.com.br</span>
+                        </div>
+                    </a>
+                </div>
+                <span class="footer-credit">Desenvolvido por Equipe Master Agente Ativo</span>
+            </div>
+        </div>
+
+        <!-- ==================== PANFLETO 2 (SUPERIOR DIREITO) ==================== -->
+        <div class="flyer flyer--top-right">
+            <div class="header">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                        <span class="logo-text">AGENTE ATIVO</span>
+                        <span class="logo-sub">TECNOLOGIA EM SAÚDE PÚBLICA</span>
+                    </div>
+                </div>
+                <div class="badge-exclusive">Especialista SUS</div>
+            </div>
+
+            <div class="title">
+                <h1>Saúde Municipal 100% Integrada</h1>
+                <p>Conectando a Atenção Básica à Média e Alta Complexidade em tempo real</p>
+            </div>
+
+            <div class="pillars">
+                <!-- ACS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon acs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização ACS <small style="color:#059669; font-weight:700;">(App Mobile)</small></h3>
+                        <p>Aplicativo móvel leve, 100% offline. Visitas geolocalizadas, busca ativa inteligente e sincronização automática com o e-SUS.</p>
+                    </div>
+                </div>
+                
+                <!-- UBS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon ubs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização UBS <small style="color:#2563eb; font-weight:700;">(Portal Web)</small></h3>
+                        <p>Triagem, prontuário único do cidadão e monitoramento dinâmico em tempo real dos 7 indicadores do Previne Brasil.</p>
+                    </div>
+                </div>
+                
+                <!-- HOSPITAL -->
+                <div class="pillar-card">
+                    <div class="pillar-icon hosp">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M12 9v6"/><path d="M9 12h6"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Portal Hospitalar <small style="color:#db2777; font-weight:700;">(Média/Alta)</small></h3>
+                        <p>Recepção com controle de senhas, Protocolo de Manchester, regulação de leitos e farmácia hospitalar de dose unitária.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-container">
+                <span class="promo-badge">Oferta Especial Limitada</span>
+                <div class="price-row">
+                    <span class="price-desc">Informatização ACS + UBS</span>
+                    <span class="price-value">R$ 59.000 <span>/ano</span></span>
+                    <span class="price-licitation">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Sem Necessidade de Licitação
+                    </span>
+                </div>
+                <div class="price-hospital">
+                    <span class="hosp-badge">Hospital</span>
+                    <span class="hosp-text">Informatização Hospitalar Completa</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <span class="cta-title">Entre em contato e agende uma demonstração:</span>
+                <div class="contacts-grid">
+                    <a href="https://wa.me/5585997055983" target="_blank" class="contact-item wa">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-val">(85) 99705-5983</span>
+                        </div>
+                    </a>
+                    <a href="mailto:comercial@agenteativo.com.br" class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-val">comercial@agenteativo.com.br</span>
+                        </div>
+                    </a>
+                </div>
+                <span class="footer-credit">Desenvolvido por Equipe Master Agente Ativo</span>
+            </div>
+        </div>
+
+        <!-- ==================== PANFLETO 3 (INFERIOR ESQUERDO) ==================== -->
+        <div class="flyer flyer--bottom-left">
+            <div class="header">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                        <span class="logo-text">AGENTE ATIVO</span>
+                        <span class="logo-sub">TECNOLOGIA EM SAÚDE PÚBLICA</span>
+                    </div>
+                </div>
+                <div class="badge-exclusive">Especialista SUS</div>
+            </div>
+
+            <div class="title">
+                <h1>Saúde Municipal 100% Integrada</h1>
+                <p>Conectando a Atenção Básica à Média e Alta Complexidade em tempo real</p>
+            </div>
+
+            <div class="pillars">
+                <!-- ACS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon acs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização ACS <small style="color:#059669; font-weight:700;">(App Mobile)</small></h3>
+                        <p>Aplicativo móvel leve, 100% offline. Visitas geolocalizadas, busca ativa inteligente e sincronização automática com o e-SUS.</p>
+                    </div>
+                </div>
+                
+                <!-- UBS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon ubs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização UBS <small style="color:#2563eb; font-weight:700;">(Portal Web)</small></h3>
+                        <p>Triagem, prontuário único do cidadão e monitoramento dinâmico em tempo real dos 7 indicadores do Previne Brasil.</p>
+                    </div>
+                </div>
+                
+                <!-- HOSPITAL -->
+                <div class="pillar-card">
+                    <div class="pillar-icon hosp">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M12 9v6"/><path d="M9 12h6"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Portal Hospitalar <small style="color:#db2777; font-weight:700;">(Média/Alta)</small></h3>
+                        <p>Recepção com controle de senhas, Protocolo de Manchester, regulação de leitos e farmácia hospitalar de dose unitária.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-container">
+                <span class="promo-badge">Oferta Especial Limitada</span>
+                <div class="price-row">
+                    <span class="price-desc">Informatização ACS + UBS</span>
+                    <span class="price-value">R$ 59.000 <span>/ano</span></span>
+                    <span class="price-licitation">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Sem Necessidade de Licitação
+                    </span>
+                </div>
+                <div class="price-hospital">
+                    <span class="hosp-badge">Hospital</span>
+                    <span class="hosp-text">Informatização Hospitalar Completa</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <span class="cta-title">Entre em contato e agende uma demonstração:</span>
+                <div class="contacts-grid">
+                    <a href="https://wa.me/5585997055983" target="_blank" class="contact-item wa">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-val">(85) 99705-5983</span>
+                        </div>
+                    </a>
+                    <a href="mailto:comercial@agenteativo.com.br" class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-val">comercial@agenteativo.com.br</span>
+                        </div>
+                    </a>
+                </div>
+                <span class="footer-credit">Desenvolvido por Equipe Master Agente Ativo</span>
+            </div>
+        </div>
+
+        <!-- ==================== PANFLETO 4 (INFERIOR DIREITO) ==================== -->
+        <div class="flyer">
+            <div class="header">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div>
+                        <span class="logo-text">AGENTE ATIVO</span>
+                        <span class="logo-sub">TECNOLOGIA EM SAÚDE PÚBLICA</span>
+                    </div>
+                </div>
+                <div class="badge-exclusive">Especialista SUS</div>
+            </div>
+
+            <div class="title">
+                <h1>Saúde Municipal 100% Integrada</h1>
+                <p>Conectando a Atenção Básica à Média e Alta Complexidade em tempo real</p>
+            </div>
+
+            <div class="pillars">
+                <!-- ACS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon acs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização ACS <small style="color:#059669; font-weight:700;">(App Mobile)</small></h3>
+                        <p>Aplicativo móvel leve, 100% offline. Visitas geolocalizadas, busca ativa inteligente e sincronização automática com o e-SUS.</p>
+                    </div>
+                </div>
+                
+                <!-- UBS -->
+                <div class="pillar-card">
+                    <div class="pillar-icon ubs">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Informatização UBS <small style="color:#2563eb; font-weight:700;">(Portal Web)</small></h3>
+                        <p>Triagem, prontuário único do cidadão e monitoramento dinâmico em tempo real dos 7 indicadores do Previne Brasil.</p>
+                    </div>
+                </div>
+                
+                <!-- HOSPITAL -->
+                <div class="pillar-card">
+                    <div class="pillar-icon hosp">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M12 9v6"/><path d="M9 12h6"/></svg>
+                    </div>
+                    <div class="pillar-info">
+                        <h3>Portal Hospitalar <small style="color:#db2777; font-weight:700;">(Média/Alta)</small></h3>
+                        <p>Recepção com controle de senhas, Protocolo de Manchester, regulação de leitos e farmácia hospitalar de dose unitária.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-container">
+                <span class="promo-badge">Oferta Especial Limitada</span>
+                <div class="price-row">
+                    <span class="price-desc">Informatização ACS + UBS</span>
+                    <span class="price-value">R$ 59.000 <span>/ano</span></span>
+                    <span class="price-licitation">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Sem Necessidade de Licitação
+                    </span>
+                </div>
+                <div class="price-hospital">
+                    <span class="hosp-badge">Hospital</span>
+                    <span class="hosp-text">Informatização Hospitalar Completa</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <span class="cta-title">Entre em contato e agende uma demonstração:</span>
+                <div class="contacts-grid">
+                    <a href="https://wa.me/5585997055983" target="_blank" class="contact-item wa">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">WhatsApp</span>
+                            <span class="contact-val">(85) 99705-5983</span>
+                        </div>
+                    </a>
+                    <a href="mailto:comercial@agenteativo.com.br" class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <span class="contact-label">E-mail</span>
+                            <span class="contact-val">comercial@agenteativo.com.br</span>
+                        </div>
+                    </a>
+                </div>
+                <span class="footer-credit">Desenvolvido por Equipe Master Agente Ativo</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
