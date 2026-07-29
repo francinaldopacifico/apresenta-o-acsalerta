@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema Agente de Trânsito</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #2c3e50;
+    background: #f0f4f8;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* ============ BOTÃO VOLTAR (X) ============ */
+  .btn-close {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-decoration: none;
+    color: #c62828;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+  }
+  .btn-close:hover {
+    transform: scale(1.08) rotate(90deg);
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(198, 40, 40, 0.35);
+    color: #b71c1c;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    background: linear-gradient(135deg, #0288D1 0%, #01579B 100%);
+    color: #fff;
+    padding: 60px 20px 50px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(2, 136, 209, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -120px; right: -100px;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    position: relative;
+    z-index: 1;
+  }
+  header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+  }
+  header .subtitle {
+    font-size: 19px;
+    opacity: 0.95;
+    font-weight: 300;
+    max-width: 720px;
+    margin: 0 auto 30px;
+    position: relative;
+    z-index: 1;
+  }
+  header .features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  header .feature-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ============ MAIN ============ */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 30px;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .intro h2 {
+    font-size: 36px;
+    color: #0288D1;
+    margin-bottom: 16px;
+  }
+  .intro p {
+    font-size: 17px;
+    color: #546e7a;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ============ MODULE ============ */
+  .module {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 90px;
+    background: #fff;
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    border: 1px solid #e1e8ed;
+  }
+  .module.reverse { grid-template-columns: 1fr 1fr; }
+  .module.reverse .module-img { order: -1; }
+
+  .module-img {
+    text-align: center;
+  }
+  .module-img img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .module-info .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #29B6F6, #0288D1);
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+  .module-info h3 {
+    font-size: 32px;
+    color: #263238;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .module-info .desc {
+    color: #546e7a;
+    margin-bottom: 24px;
+    font-size: 15.5px;
+  }
+
+  .features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .features-list li {
+    padding: 9px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14.5px;
+    color: #37474f;
+    border-bottom: 1px dashed #e1e8ed;
+  }
+  .features-list li:last-child { border-bottom: none; }
+  .features-list .ico {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Cores específicas de cada módulo */
+  .module.agent .badge { background: linear-gradient(135deg, #EF5350, #C62828); }
+  .module.admin .badge { background: linear-gradient(135deg, #29B6F6, #0288D1); }
+  .module.citizen .badge { background: linear-gradient(135deg, #FFA726, #FB8C00); }
+
+  /* ============ STATS ============ */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px;
+    background: linear-gradient(135deg, #0288D1 0%, #01579B 100%);
+    color: #fff;
+    border-radius: 20px;
+    margin-bottom: 70px;
+  }
+  .stat { text-align: center; }
+  .stat .num {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .stat .label {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: #263238;
+    color: #cfd8dc;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .module, .module.reverse { grid-template-columns: 1fr; }
+    .module.reverse .module-img { order: 0; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    header h1 { font-size: 38px; }
+    header .subtitle { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="btn-close" aria-label="Voltar para página inicial" title="Voltar">✕</a>
+
+<header>
+  <span class="tag">Sistema Municipal</span>
+  <h1>Agente de Trânsito</h1>
+  <p class="subtitle">Solução completa de mobilidade urbana para <strong>sua cidade</strong>. Integração entre agentes de campo, gestão administrativa e atendimento ao cidadão em uma única plataforma offline-first.</p>
+  <div class="features">
+    <span class="feature-pill">⚡ Operação Offline-First</span>
+    <span class="feature-pill">📍 GPS + NTP</span>
+    <span class="feature-pill">📷 OCR de Placas</span>
+    <span class="feature-pill">🖨️ Bluetooth Impressora</span>
+    <span class="feature-pill">✍️ Assinatura Digital</span>
+    <span class="feature-pill">🔄 Sincronização Automática</span>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <h2>Três Módulos Integrados</h2>
+    <p>Do campo à gestão, do atendimento ao cidadão — uma cadeia completa de fiscalização e serviços de trânsito, com dados sincronizados e processos juridicamente válidos.</p>
+  </section>
+
+  <!-- ============ MÓDULO AGENTE ============ -->
+  <section class="module agent">
+    <div class="module-img">
+      <img src="tablet_agente_3d.svg" alt="Aplicativo do Agente em tablet paisagem">
+    </div>
+    <div class="module-info">
+      <span class="badge">Aplicativo do Agente</span>
+      <h3>Em campo com tecnologia</h3>
+      <p class="desc">App mobile para tablets e smartphones dos agentes de trânsito. Emissão de AITs completa, com captura de evidências, OCR de placas e operação offline.</p>
+      <ul class="features-list">
+        <li><span class="ico" style="background:#EF5350">📋</span><strong>Emitir AIT (Auto de Infração):</strong> formulário guiado com veiculo, infração, condutor, evidências e assinatura</li>
+        <li><span class="ico" style="background:#D32F2F">📃</span><strong>Meus AITs:</strong> histórico de autos emitidos pelo agente, com reimpressão via Bluetooth</li>
+        <li><span class="ico" style="background:#FFA726">🔍</span><strong>Consultar Placas:</strong> busca de veículos com leitura automática via câmera e OCR (ML Kit)</li>
+        <li><span class="ico" style="background:#29B6F6">👥</span><strong>Consultar Condutores:</strong> consulta de CNH, ocorrências e pontuação por CPF</li>
+        <li><span class="ico" style="background:#AB47BC">🚖</span><strong>Fiscalização Reboque:</strong> registro de remoção de veículos ao pátio, com checklist de avarias e fotos</li>
+        <li><span class="ico" style="background:#26A69A">📖</span><strong>Diário de Bordo:</strong> registro de km e turno por viatura, vinculado à escala</li>
+        <li><span class="ico" style="background:#66BB6A">🔄</span><strong>Sincronizar:</strong> envio da fila offline para a central, automático ao detectar internet</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO ADMIN ============ -->
+  <section class="module admin reverse">
+    <div class="module-img">
+      <img src="desktop_admin.svg" alt="Painel Administrativo em monitor de mesa">
+    </div>
+    <div class="module-info">
+      <span class="badge">Painel Administrativo</span>
+      <h3>Gestão central completa</h3>
+      <p class="desc">Web/desktop para supervisores e gestores da central. 7 módulos integrados cobrindo todo o ciclo de fiscalização, pátio, finanças, pessoal e BI.</p>
+      <ul class="features-list">
+        <li><span class="ico" style="background:#00BCD4">📡</span><strong>Sincronização em tempo real:</strong> dashboard da fila de envios dos agentes, com retentativas automáticas</li>
+        <li><span class="ico" style="background:#7E57C2">📱</span><strong>Gestão de Dispositivos (MDM):</strong> autorizar tablets, bloquear e enviar comando de limpeza remota</li>
+        <li><span class="ico" style="background:#42A5F5">✅</span><strong>Validação de AITs:</strong> homologação com visualização de fotos, GPS, vídeos e assinatura do condutor</li>
+        <li><span class="ico" style="background:#26A69A">🚗</span><strong>Gestão da Frota:</strong> cadastro de viaturas, abastecimento, km/L, diário de bordo e manutenções</li>
+        <li><span class="ico" style="background:#FFA726">🅿️</span><strong>Pátio e Leilão:</strong> entrada/saída, checklist de remoção, cálculo de diárias, leilão após 60 dias</li>
+        <li><span class="ico" style="background:#AB47BC">⚖️</span><strong>JARI:</strong> cadastro de membros, protocolo, pareceres e julgamento de defesas/recursos</li>
+        <li><span class="ico" style="background:#66BB6A">💰</span><strong>Financeiro:</strong> emissão de DAM (boleto/PIX), conciliação bancária automática</li>
+        <li><span class="ico" style="background:#1E88E5">📊</span><strong>BI e Mapa de Calor:</strong> dashboard financeiro, produtividade dos agentes, mapa de ocorrências por GPS</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO CIDADÃO ============ -->
+  <section class="module citizen">
+    <div class="module-img">
+      <img src="celular_cidadao.svg" alt="Portal do Cidadão em smartphone">
+    </div>
+    <div class="module-info">
+      <span class="badge">Portal do Cidadão</span>
+      <h3>Atendimento sem sair de casa</h3>
+      <p class="desc">App mobile para cidadãos consultarem débitos, pagarem multas (PIX), indicarem condutor real, recorrerem e agendarem retirada de veículos.</p>
+      <ul class="features-list">
+        <li><span class="ico" style="background:#EF5350">🔍</span><strong>Consultar Débitos e Multas:</strong> busca por placa, com detalhes da infração, valor e prazo</li>
+        <li><span class="ico" style="background:#66BB6A">📱</span><strong>Emitir Boleto (PIX):</strong> geração de QR Code PIX e código de barras para pagamento imediato</li>
+        <li><span class="ico" style="background:#42A5F5">🔁</span><strong>Indicar Real Condutor:</strong> transferência de pontuação da CNH, com prazo legal de 30 dias</li>
+        <li><span class="ico" style="background:#FFA726">📄</span><strong>Defesa Prévia e Recurso:</strong> protocolar defesa na JARI com consulta do AIT e upload de documentos</li>
+        <li><span class="ico" style="background:#AB47BC">📅</span><strong>Agendar Retirada:</strong> marcar horário para retirar veículo do pátio mediante baixa de débitos</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="stat">
+      <div class="num">24+</div>
+      <div class="label">Telas do Painel Administrativo</div>
+    </div>
+    <div class="stat">
+      <div class="num">7</div>
+      <div class="label">Módulos Integrados</div>
+    </div>
+    <div class="stat">
+      <div class="num">100%</div>
+      <div class="label">Offline-First</div>
+    </div>
+    <div class="stat">
+      <div class="num">NTP</div>
+      <div class="label">Timestamp Jurídico</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="margin-bottom: 14px;">
+    Agente de Trânsito · sua cidade · 2026 · Flutter 3.44 + Dart 3.12
+  </div>
+  <div style="font-size: 15px; line-height: 1.9;">
+    <strong>E-mail:</strong> comercial@pindora.online &nbsp;&nbsp;|&nbsp;&nbsp;
+    <strong>WhatsApp:</strong> (85) 99705-5983 &nbsp;&nbsp;|&nbsp;&nbsp;
+    <strong>Sr. Pacífico</strong>
+  </div>
+</footer>
+
+</body>
+</html>

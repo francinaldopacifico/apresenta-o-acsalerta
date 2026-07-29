@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pindora.online — Sistemas Municipais</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e1e8ed 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    background: linear-gradient(135deg, #0288D1 0%, #01579B 100%);
+    color: #fff;
+    padding: 80px 20px 60px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(2, 136, 209, 0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -100px; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    position: relative;
+    z-index: 1;
+  }
+  header h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    text-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -1px;
+  }
+  header h1 .domain {
+    font-size: 28px;
+    font-weight: 400;
+    opacity: 0.85;
+    display: block;
+    margin-top: 6px;
+  }
+  header .subtitle {
+    font-size: 19px;
+    opacity: 0.95;
+    font-weight: 300;
+    max-width: 720px;
+    margin: 16px auto 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ MAIN ============ */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 30px 50px;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .intro h2 {
+    font-size: 32px;
+    color: #0288D1;
+    margin-bottom: 14px;
+  }
+  .intro p {
+    font-size: 17px;
+    color: #546e7a;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ============ CARDS ============ */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-top: 50px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 14px 50px rgba(0,0,0,0.10);
+    border: 1px solid #e1e8ed;
+    transition: transform .25s ease, box-shadow .25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  }
+
+  .card-banner {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-banner::before {
+    content: "";
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  .card-banner::after {
+    content: "";
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .card.saude .card-banner { background: linear-gradient(135deg, #4FC3F7, #0288D1); }
+  .card.transito .card-banner { background: linear-gradient(135deg, #EF5350, #C62828); }
+
+  .card-body {
+    padding: 32px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
+    align-self: flex-start;
+  }
+  .card.saude .card-badge { background: #E1F5FE; color: #0288D1; }
+  .card.transito .card-badge { background: #FFEBEE; color: #C62828; }
+
+  .card h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+    color: #263238;
+    font-weight: 700;
+  }
+  .card p {
+    color: #546e7a;
+    font-size: 15px;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+
+  .card .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    transition: gap .2s ease;
+  }
+  .card.saude .cta { background: linear-gradient(135deg, #29B6F6, #0288D1); }
+  .card.transito .cta { background: linear-gradient(135deg, #EF5350, #C62828); }
+  .card:hover .cta { gap: 14px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: #263238;
+    color: #cfd8dc;
+    padding: 34px 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  footer .contact {
+    margin-bottom: 12px;
+    line-height: 1.9;
+    font-size: 15px;
+  }
+  footer .contact strong { color: #fff; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 800px) {
+    .cards { grid-template-columns: 1fr; }
+    header h1 { font-size: 42px; }
+    header h1 .domain { font-size: 22px; }
+    header .subtitle { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="tag">Sistemas Municipais</span>
+  <h1>
+    pindora.online
+    <span class="domain">Soluções para sua cidade</span>
+  </h1>
+  <p class="subtitle">Plataformas digitais desenvolvidas para a gestão pública municipal — modernas, seguras e integradas.</p>
+</header>
+
+<main>
+  <section class="intro">
+    <h2>Escolha o sistema</h2>
+    <p>Selecione abaixo o módulo que deseja acessar.</p>
+  </section>
+
+  <section class="cards">
+    <!-- CARD 1: SAÚDE MUNICIPAL -->
+    <a class="card saude" href="https://pindora.online/saude" target="_blank" rel="noopener">
+      <div class="card-banner">🏥</div>
+      <div class="card-body">
+        <span class="card-badge">Já disponível</span>
+        <h3>Saúde Municipal</h3>
+        <p>Gestão completa de saúde pública para prefeituras. Prontuários, agendamentos, unidades de saúde, programas de vacinação e relatórios epidemiológicos.</p>
+        <span class="cta">Acessar sistema →</span>
+      </div>
+    </a>
+
+    <!-- CARD 2: AGENTE DE TRÂNSITO -->
+    <a class="card transito" href="agente_transito.html">
+      <div class="card-banner">🚓</div>
+      <div class="card-body">
+        <span class="card-badge">Novo</span>
+        <h3>Agente de Trânsito</h3>
+        <p>Sistema completo de mobilidade urbana. App do agente em campo, painel administrativo central e Portal do Cidadão — tudo integrado e offline-first.</p>
+        <span class="cta">Acessar sistema →</span>
+      </div>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="contact">
+    <strong>E-mail:</strong> comercial@pindora.online &nbsp;&nbsp;|&nbsp;&nbsp;
+    <strong>WhatsApp:</strong> (85) 99705-5983 &nbsp;&nbsp;|&nbsp;&nbsp;
+    <strong>Sr. Pacífico</strong>
+  </div>
+  <div>pindora.online · sua cidade · 2026</div>
+</footer>
+
+</body>
+</html>
